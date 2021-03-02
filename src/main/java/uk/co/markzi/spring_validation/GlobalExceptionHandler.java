@@ -56,12 +56,12 @@ public class GlobalExceptionHandler {
         List<FieldErrorDto> errors = new ArrayList<>();
 
         for (FieldError fieldError : ex.getBindingResult().getFieldErrors()) {
-            FieldErrorDto fieldErrorDto = new FieldErrorDto(fieldError.getDefaultMessage(), null, fieldError.getField(), fieldError.getRejectedValue() != null ? fieldError.getRejectedValue().toString() : null, null);
+            FieldErrorDto fieldErrorDto = new FieldErrorDto(fieldError.getDefaultMessage(), fieldError.getField(), fieldError.getRejectedValue() != null ? fieldError.getRejectedValue().toString() : null);
             errors.add(fieldErrorDto);
         }
 
         for (ObjectError objectError : ex.getBindingResult().getGlobalErrors()) {
-            FieldErrorDto fieldErrorDto = new FieldErrorDto(objectError.getDefaultMessage(), objectError.getObjectName(), null, null, null);
+            FieldErrorDto fieldErrorDto = new FieldErrorDto(objectError.getDefaultMessage(), objectError.getObjectName(), null);
             errors.add(fieldErrorDto);
         }
 
@@ -114,7 +114,7 @@ public class GlobalExceptionHandler {
         List<GlobalExceptionHandler.FieldErrorDto> errors = new ArrayList<>();
 
         for (ConstraintViolation constraintViolation : constraintViolations) {
-            FieldErrorDto fieldErrorDto = new FieldErrorDto(constraintViolation.getMessage(), null, constraintViolation.getPropertyPath().toString(), constraintViolation.getInvalidValue() != null ? constraintViolation.getInvalidValue().toString() : null, null);
+            FieldErrorDto fieldErrorDto = new FieldErrorDto(constraintViolation.getMessage(), constraintViolation.getPropertyPath().toString(), constraintViolation.getInvalidValue() != null ? constraintViolation.getInvalidValue().toString() : null);
             errors.add(fieldErrorDto);
         }
         return new ErrorResponse(request.getRequest().getRequestURI(), HttpStatus.BAD_REQUEST.value(), ErrorType.VALIDATION_ERROR, errors);
@@ -127,10 +127,8 @@ public class GlobalExceptionHandler {
     public static class FieldErrorDto {
 
         private final String defaultMessage;
-        private final String objectName;
         private final String field;
         private final String rejectedValue;
-        private final String code;
     }
 
     public enum ErrorType {
