@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import org.hibernate.validator.constraints.Range;
 import uk.co.markzi.spring_validation.vehicle.validation.ValidateVehicleRequest;
-import uk.co.markzi.spring_validation.vehicle.validation.groups.ClassValidation;
+import uk.co.markzi.spring_validation.validation.groups.ClassValidation;
 
 import javax.validation.GroupSequence;
 import javax.validation.constraints.Max;

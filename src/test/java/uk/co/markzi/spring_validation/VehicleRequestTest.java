@@ -3,7 +3,7 @@ package uk.co.markzi.spring_validation;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import uk.co.markzi.spring_validation.vehicle.VehicleRequest;
-import uk.co.markzi.spring_validation.vehicle.validation.groups.ClassValidation;
+import uk.co.markzi.spring_validation.validation.groups.ClassValidation;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
